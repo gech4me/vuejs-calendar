@@ -11,6 +11,9 @@
       return {
         msg: "Hey, world"
       }
+    },
+    created() {
+      console.log(this.$moment);
     }
   }
 </script>
