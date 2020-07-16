@@ -1,8 +1,8 @@
 import Vue from 'vue'
+import App from "./components/App.vue";
+import './style.scss';
 
 new Vue({
   el: '#app',
-  data: {
-    msg: 'Hello World'
-  }
+  components: { App }
 });
