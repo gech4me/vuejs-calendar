@@ -22,13 +22,13 @@
   export default {
     name: "App",
     components: {CalendarDay},
-    data() {
-      return {
-        month: 7,
-        year: 2020,
-      }
-    },
     computed: {
+      month() {
+        return this.$store.state.currentMonth;
+      },
+      year() {
+        return this.$store.state.currentYear;
+      },
       days() {
         // Generating all days for current month.
         let days = [];
