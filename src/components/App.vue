@@ -1,5 +1,13 @@
 <template>
     <div>
+        <div id="header">
+            <div>
+                <h1>Calendar App</h1>
+            </div>
+            <div>
+                <current-month></current-month>
+            </div>
+        </div>
         <div id="day-bar">
             <div>Mon</div>
             <div>Tue</div>
@@ -19,9 +27,10 @@
 
 <script>
   import CalendarDay from "./CalendarDay.vue";
+  import CurrentMonth from "./CurrentMonth.vue";
   export default {
     name: "App",
-    components: {CalendarDay},
+    components: {CurrentMonth, CalendarDay},
     computed: {
       month() {
         return this.$store.state.currentMonth;
