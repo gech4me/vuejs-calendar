@@ -22,10 +22,10 @@
     },
     methods: {
       inc() {
-        console.log('inc')
+        this.$store.commit('setCurrentMonth',this.month + 1);
       },
       dec() {
-        console.log("dec")
+        this.$store.commit('setCurrentMonth',this.month - 1);
       }
     }
   }
