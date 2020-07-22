@@ -5,6 +5,7 @@ import moment from 'moment-timezone';
 moment.tz.setDefault('UTC');
 
 import axios from 'axios';
+import response from "vue-resource/src/http/response";
 
 export default new Vuex.Store({
   state: {
@@ -43,12 +44,20 @@ export default new Vuex.Store({
   },
   actions: {
     addEvent(context, payload) {
-      let obj = {
-        description: payload,
-        date: context.state.eventFormDate
-      };
-      context.commit('addEvent',obj);
-      axios.post('add_event', obj);
+      return new Promise((resolve, reject) => {
+        let obj = {
+          description: payload,
+          date: context.state.eventFormDate
+        };
+        axios.post('add_event', obj).then(response => {
+          if(response.status === 200) {
+            context.commit('addEvent',obj);
+            resolve();
+          } else {
+            reject();
+          }
+        });
+      });
     }
   }
 })
