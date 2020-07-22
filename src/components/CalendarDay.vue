@@ -13,11 +13,14 @@
     props: ['day'],
     computed: {
       classObject() {
+        let eventFormDate = this.$store.state.eventFormDate;
+        let eventFormActive = this.$store.state.eventFormActive;
         let today = this.day.isSame(this.$moment(),'day');
         return {
           day: true,
           today,
-          past: this.day.isSameOrBefore(this.$moment(),'day') && !today
+          past: this.day.isSameOrBefore(this.$moment(),'day') && !today,
+          active: eventFormDate.isSame(this.day,'day') && eventFormActive
         }
       },
       events() {
